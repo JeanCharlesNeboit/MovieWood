@@ -12,6 +12,11 @@
 		5264D2DE21F751F400D2082C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5264D2DC21F751F400D2082C /* Main.storyboard */; };
 		5264D2E021F751F600D2082C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5264D2DF21F751F600D2082C /* Assets.xcassets */; };
 		5264D2E321F751F600D2082C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5264D2E121F751F600D2082C /* LaunchScreen.storyboard */; };
+		5264D2EB21F7572C00D2082C /* TodayCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2EA21F7572C00D2082C /* TodayCollectionViewController.swift */; };
+		5264D2ED21F757FF00D2082C /* WatchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2EC21F757FF00D2082C /* WatchTableViewController.swift */; };
+		5264D2EF21F7582D00D2082C /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2EE21F7582D00D2082C /* SearchTableViewController.swift */; };
+		5264D2F121F75F2700D2082C /* TodayCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2F021F75F2700D2082C /* TodayCollectionViewLayout.swift */; };
+		5264D2F321F7689800D2082C /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2F221F7689800D2082C /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		5264D2DF21F751F600D2082C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5264D2E221F751F600D2082C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5264D2E421F751F600D2082C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5264D2EA21F7572C00D2082C /* TodayCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewController.swift; sourceTree = "<group>"; };
+		5264D2EC21F757FF00D2082C /* WatchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTableViewController.swift; sourceTree = "<group>"; };
+		5264D2EE21F7582D00D2082C /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		5264D2F021F75F2700D2082C /* TodayCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5264D2F221F7689800D2082C /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +66,12 @@
 			children = (
 				5264D2D821F751F400D2082C /* AppDelegate.swift */,
 				5264D2DA21F751F400D2082C /* ViewController.swift */,
+				5264D2EA21F7572C00D2082C /* TodayCollectionViewController.swift */,
+				5264D2F021F75F2700D2082C /* TodayCollectionViewLayout.swift */,
+				5264D2EC21F757FF00D2082C /* WatchTableViewController.swift */,
+				5264D2EE21F7582D00D2082C /* SearchTableViewController.swift */,
 				5264D2DC21F751F400D2082C /* Main.storyboard */,
+				5264D2F221F7689800D2082C /* Movie.swift */,
 				5264D2DF21F751F600D2082C /* Assets.xcassets */,
 				5264D2E121F751F600D2082C /* LaunchScreen.storyboard */,
 				5264D2E421F751F600D2082C /* Info.plist */,
@@ -135,8 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5264D2F321F7689800D2082C /* Movie.swift in Sources */,
 				5264D2DB21F751F400D2082C /* ViewController.swift in Sources */,
 				5264D2D921F751F400D2082C /* AppDelegate.swift in Sources */,
+				5264D2EF21F7582D00D2082C /* SearchTableViewController.swift in Sources */,
+				5264D2EB21F7572C00D2082C /* TodayCollectionViewController.swift in Sources */,
+				5264D2F121F75F2700D2082C /* TodayCollectionViewLayout.swift in Sources */,
+				5264D2ED21F757FF00D2082C /* WatchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,7 +14,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        APIRequest.request(urlString: APIRequest.apiURL + "/trending/movie/day?api_key=") { (data) in
+            guard let data = data else {
+                // Display error
+                return
+            }
+            //UI thread, use data image
+            self.performSegue(withIdentifier: "Present", sender: nil)
+        }
+    }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 }
 

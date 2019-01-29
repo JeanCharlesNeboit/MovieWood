@@ -69,17 +69,15 @@ class TodayCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         if let poster = movie?.poster_image {
-            cell.poster.image = poster
+            cell.showPoster(image: poster)
         }
         else {
-            cell.activityView.startAnimating()
-            cell.activityView.isHidden = false
-            APIRequest.request(urlString: APIRequest.resourcesURL+"/\(movie?.poster_path ?? "")") { (data) in
-                if let data = data {
-                    movie?.poster_image = UIImage(data: data)
-                    cell.poster.image = movie?.poster_image
-                    cell.activityView.isHidden = true
-                    cell.activityView.stopAnimating()
+            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")") { (image) in
+                if let image = image {
+                    movie?.poster_image = image
+                    if let index = self.movies?.index(where: {$0 === movie}) {
+                        collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+                    }
                 }
             }
         }

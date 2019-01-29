@@ -24,4 +24,16 @@ class TodayCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
+    
+    override func prepareForReuse() {
+        self.poster.image = nil
+        self.activityView.startAnimating()
+        self.activityView.isHidden = false
+    }
+    
+    func showPoster(image: UIImage) {
+        self.activityView.isHidden = true
+        self.activityView.stopAnimating()
+        self.poster.image = image
+    }
 }

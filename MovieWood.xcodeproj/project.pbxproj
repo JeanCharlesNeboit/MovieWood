@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5243FE7B220084880046BE89 /* MovieWood.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5243FE79220084880046BE89 /* MovieWood.xcdatamodeld */; };
+		5243FE7D220085400046BE89 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5243FE7C220085400046BE89 /* ImageDownloader.swift */; };
 		5264D2D921F751F400D2082C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2D821F751F400D2082C /* AppDelegate.swift */; };
 		5264D2DB21F751F400D2082C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5264D2DA21F751F400D2082C /* ViewController.swift */; };
 		5264D2DE21F751F400D2082C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5264D2DC21F751F400D2082C /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5243FE7A220084880046BE89 /* MovieWood.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieWood.xcdatamodel; sourceTree = "<group>"; };
+		5243FE7C220085400046BE89 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		5264D2D521F751F400D2082C /* MovieWood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieWood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5264D2D821F751F400D2082C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5264D2DA21F751F400D2082C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +83,9 @@
 				5264D2EE21F7582D00D2082C /* SearchTableViewController.swift */,
 				52CEC82121FFB5030041EAE3 /* MovieViewController.swift */,
 				5264D2DC21F751F400D2082C /* Main.storyboard */,
+				5243FE79220084880046BE89 /* MovieWood.xcdatamodeld */,
 				5264D2F221F7689800D2082C /* Movie.swift */,
+				5243FE7C220085400046BE89 /* ImageDownloader.swift */,
 				743B25DF21F775FB00FA85F3 /* APIRequest.swift */,
 				5264D2DF21F751F600D2082C /* Assets.xcassets */,
 				5264D2E121F751F600D2082C /* LaunchScreen.storyboard */,
@@ -168,6 +174,8 @@
 				5264D2F121F75F2700D2082C /* TodayCollectionViewLayout.swift in Sources */,
 				743B25E021F775FB00FA85F3 /* APIRequest.swift in Sources */,
 				52CEC82221FFB5030041EAE3 /* MovieViewController.swift in Sources */,
+				5243FE7B220084880046BE89 /* MovieWood.xcdatamodeld in Sources */,
+				5243FE7D220085400046BE89 /* ImageDownloader.swift in Sources */,
 				5264D2ED21F757FF00D2082C /* WatchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +376,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5243FE79220084880046BE89 /* MovieWood.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5243FE7A220084880046BE89 /* MovieWood.xcdatamodel */,
+			);
+			currentVersion = 5243FE7A220084880046BE89 /* MovieWood.xcdatamodel */;
+			path = MovieWood.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5264D2CD21F751F400D2082C /* Project object */;
 }

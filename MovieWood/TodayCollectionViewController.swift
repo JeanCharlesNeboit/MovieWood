@@ -13,6 +13,7 @@ private let reuseIdentifier = "TodayCell"
 class TodayCollectionViewController: UICollectionViewController {
 
     var refreshControl: UIRefreshControl!
+    var movies: [Movie]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,15 +60,39 @@ class TodayCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return movies?.count ?? 0
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TodayCollectionViewCell
+        let movie = movies?[indexPath.row]
     
         // Configure the cell
+        if let poster = movie?.poster_image {
+            cell.poster.image = poster
+        }
+        else {
+            cell.activityView.startAnimating()
+            cell.activityView.isHidden = false
+            APIRequest.request(urlString: APIRequest.resourcesURL+"/\(movie?.poster_path ?? "")") { (data) in
+                if let data = data {
+                    movie?.poster_image = UIImage(data: data)
+                    cell.poster.image = movie?.poster_image
+                    cell.activityView.isHidden = true
+                    cell.activityView.stopAnimating()
+                }
+            }
+        }
+        cell.title.text = movie?.original_title
     
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Set up card detail view controller
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
+        vc.movie = movies?[indexPath.row]
+        present(vc, animated: true, completion: nil)
     }
 
     // MARK: UICollectionViewDelegate

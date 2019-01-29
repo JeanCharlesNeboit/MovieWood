@@ -17,18 +17,26 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        APIRequest.request(urlString: APIRequest.apiURL + "/trending/movie/day?api_key=") { (data) in
+        APIRequest.request(urlString: APIRequest.apiURL+"/trending/movie/day") { (data) in
             guard let data = data else {
                 // Display error
                 return
             }
             //UI thread, use data image
-            self.performSegue(withIdentifier: "Present", sender: nil)
+            var movies = [Movie]()
+            if let list = try? JSONDecoder().decode(MovieList.self, from: data) {
+                movies = list.movies
+            }
+            self.performSegue(withIdentifier: "Present", sender: movies)
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let tab = segue.destination as? UITabBarController, let movies = sender as? [Movie] {
+            if let nav = tab.viewControllers?.first as? UINavigationController, let vc = nav.topViewController as? TodayCollectionViewController {
+                vc.movies = movies
+            }
+        }
     }
 }
 

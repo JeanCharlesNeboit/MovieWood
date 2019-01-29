@@ -10,10 +10,12 @@ import Foundation
 
 class APIRequest {
     static let apiURL = "https://api.themoviedb.org/3"
-    static let resourcesApiURL = "https://image.tmdb.org"
+    static let apiKey = "api_key="
+    static let resourcesURL = "https://image.tmdb.org/t/p/original"
     
     static func request(urlString: String, completionHandler: @escaping (Data?) -> Void) {
-        guard let url = URL(string: urlString) else {
+        let _url = urlString + "?" + apiKey
+        guard let url = URL(string: _url) else {
             completionHandler(nil)
             return
         }

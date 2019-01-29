@@ -10,5 +10,18 @@ import UIKit
 
 class TodayCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var poster: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
 }

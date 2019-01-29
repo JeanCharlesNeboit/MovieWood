@@ -14,7 +14,7 @@ class TodayCollectionViewLayout: UICollectionViewLayout {
     var cachedAttributes = [UICollectionViewLayoutAttributes]()
     
     fileprivate let column = 2
-    fileprivate let tileFormat = 16/9
+    fileprivate let tileFormat: CGFloat = 1.5
     fileprivate let tileMargin: CGFloat = 8
     
     /// - Tag: PrepareMosaicLayout
@@ -43,7 +43,7 @@ class TodayCollectionViewLayout: UICollectionViewLayout {
             let columnIndex: CGFloat = CGFloat(currentIndex%2)
             let x = tileMargin*(columnIndex+1) + cvWidth*columnIndex
             let y = lastFrame.maxY + tileMargin
-            let height = cvWidth*16/9
+            let height = cvWidth*tileFormat
             let width = cvWidth
             
             let segmentFrame = CGRect(x: x, y: y, width: width, height: height)

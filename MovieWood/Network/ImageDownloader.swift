@@ -11,14 +11,19 @@ import UIKit
 class ImageDownloader {
     static var imagesDict: [String: Bool]?
     
-    static func downloadImage(urlString: String, completionHandler: @escaping (UIImage?) -> Void) {
+    enum imageType: String {
+        case original = "/original"
+        case reduce = "/w500"
+    }
+    
+    static func downloadImage(urlString: String, type: imageType, completionHandler: @escaping (UIImage?) -> Void) {
         let index = imagesDict?.index(forKey: urlString)
         if index != nil && imagesDict?[index!].value == true {
             return
         }
         
         imagesDict?[urlString] = true
-        APIRequest.request(urlString: APIRequest.resourcesURL + urlString + "?\(APIRequest.apiKey)") { (data) in
+        MovieApi.request(urlString: MovieApi.resourcesURL + type.rawValue + urlString + "?\(MovieApi.apiKey)") { (data) in
             var image: UIImage?
             if let data = data {
                 image = UIImage(data: data)

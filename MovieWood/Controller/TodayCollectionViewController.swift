@@ -72,23 +72,22 @@ class TodayCollectionViewController: UICollectionViewController {
             cell.showPoster(image: poster)
         }
         else {
-            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")") { (image) in
+            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
                 if let image = image {
                     movie?.poster_image = image
                     if let index = self.movies?.index(where: {$0 === movie}) {
-                        collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+                        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
                     }
                 }
             }
         }
-        cell.title.text = movie?.original_title
+        cell.title.text = movie?.title
     
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Set up card detail view controller
-        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieViewController") as! MovieViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
         vc.movie = movies?[indexPath.row]
         present(vc, animated: true, completion: nil)
     }

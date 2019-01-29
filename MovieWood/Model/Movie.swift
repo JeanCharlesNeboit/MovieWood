@@ -18,9 +18,19 @@ class MovieList: Codable {
 
 class Movie: Codable {
     var id: Int?
+    var title: String?
     var original_title: String?
     var release_date: String?
     var overview: String?
+    var vote_average: Float?
+    
+    class Details: Codable {
+        var genre: [String : String]?
+        
+        enum CodingKeys: String, CodingKey {
+            case genre
+        }
+    }
     
     var poster_path: String?
     var poster_image: UIImage?
@@ -28,13 +38,18 @@ class Movie: Codable {
     var backdrop_path: String?
     var backdrop_image: UIImage?
     
+    var watched: Bool?
+    var watchlist: Bool?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case poster_path
+        case title
         case original_title
         case release_date
         case backdrop_path
         case overview
+        case vote_average
     }
     
     /*required init(from decoder: Decoder) throws {

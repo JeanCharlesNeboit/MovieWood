@@ -8,22 +8,19 @@
 
 import Foundation
 
-class APIRequest {
+class MovieApi {
     static let apiURL = "https://api.themoviedb.org/3"
-    static let apiKey = "api_key="
-    static let resourcesURL = "https://image.tmdb.org/t/p/original"
+    static let apiKey = "api_key=" + (PropertyList.getValue(for: "ApiKey", plist: "Env") ?? "")
+    static let resourcesURL = "https://image.tmdb.org/t/p"
     
-    static func request(urlString: String, completionHandler: @escaping (Data?) -> Void) {
-        let _url = urlString + "?" + apiKey
+    static func request(urlString: String, parameters: String = "", completionHandler: @escaping (Data?) -> Void) {
+        let _url = urlString + "?" + apiKey +  parameters
         guard let url = URL(string: _url) else {
             completionHandler(nil)
             return
         }
-        // Background thread
         DispatchQueue.global().async {
             let data = try? Data(contentsOf: url)
-            
-            // Main/UI thread
             DispatchQueue.main.async {
                 completionHandler(data)
             }

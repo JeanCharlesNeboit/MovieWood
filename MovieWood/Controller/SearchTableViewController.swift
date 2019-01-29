@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
-
+class SearchTableViewController: UITableViewController, UISearchResultsUpdating, UISearchBarDelegate {
+    var movies: [Movie]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,9 +22,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
+        
+        tableView.register(UINib(nibName: "MovieCellView", bundle: nil), forCellReuseIdentifier: "MovieCellView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,23 +38,47 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return movies?.count ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCellView", for: indexPath) as! MovieCell
+        let movie = movies?[indexPath.row]
+        
         // Configure the cell...
+        if let poster = movie?.poster_image {
+            cell.posterImage.image = poster
+        }
+        else {
+            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
+                if let image = image {
+                    movie?.poster_image = image
+                    if let index = self.movies?.index(where: {$0 === movie}) {
+                        self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                    }
+                }
+            }
+        }
+        cell.titleLabel.text = movie?.title
+        cell.overviewLabel.text = movie?.overview
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
+        vc.movie = movies?[indexPath.row]
+        present(vc, animated: true, completion: nil)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -100,5 +128,21 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     // MARK: - Search
     func updateSearchResults(for searchController: UISearchController) {
         
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        movies?.removeAll()
+        MovieApi.request(urlString: MovieApi.apiURL + "/search/movie", parameters: "&query=\(searchBar.text?.replacingOccurrences(of: " ", with: "%20") ?? "")&page=1", completionHandler: { (data) in
+            guard let data = data else {
+                // Display error
+                return
+            }
+            
+            if let list = try? JSONDecoder().decode(MovieList.self, from: data) {
+                self.movies = list.movies
+                self.tableView.reloadData()
+            }
+        })
+        self.tableView.reloadData()
     }
 }

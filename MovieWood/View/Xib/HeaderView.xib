@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView" customModule="MovieWood" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eZb-ky-5Ff">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="201.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eZb-ky-5Ff" secondAttribute="height" multiplier="16:9" id="JAK-1u-ZZb"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="JAK-1u-ZZb"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4y-Vv-BO1">
+                    <rect key="frame" x="0.0" y="201.5" width="375" height="98.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QMp-nb-dll">
+                            <rect key="frame" x="16" y="-98.5" width="131.5" height="197"/>
+                            <constraints>
+                                <constraint firstAttribute="height" secondItem="QMp-nb-dll" secondAttribute="width" multiplier="1.5" id="wRv-IJ-Nxw"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iSI-ql-sU9">
+                            <rect key="frame" x="155.5" y="8" width="203.5" height="29"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcl-om-W5G">
+                            <rect key="frame" x="155.5" y="41" width="203.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="QMp-nb-dll" secondAttribute="bottom" id="4cD-6o-ESq"/>
+                        <constraint firstItem="QMp-nb-dll" firstAttribute="centerY" secondItem="f4y-Vv-BO1" secondAttribute="top" id="EsI-JB-LHV"/>
+                        <constraint firstAttribute="bottom" secondItem="Wcl-om-W5G" secondAttribute="bottom" priority="250" constant="8" id="HyU-B4-KFc"/>
+                        <constraint firstItem="Wcl-om-W5G" firstAttribute="trailing" secondItem="iSI-ql-sU9" secondAttribute="trailing" id="JHi-kw-iHD"/>
+                        <constraint firstItem="Wcl-om-W5G" firstAttribute="leading" secondItem="iSI-ql-sU9" secondAttribute="leading" id="NmJ-pK-Acu"/>
+                        <constraint firstItem="Wcl-om-W5G" firstAttribute="top" secondItem="iSI-ql-sU9" secondAttribute="bottom" constant="4" id="SIA-cr-TDK"/>
+                        <constraint firstItem="QMp-nb-dll" firstAttribute="leading" secondItem="f4y-Vv-BO1" secondAttribute="leading" constant="16" id="U5p-fj-ibN"/>
+                        <constraint firstItem="iSI-ql-sU9" firstAttribute="top" secondItem="f4y-Vv-BO1" secondAttribute="top" constant="8" id="WMj-Zr-OBZ"/>
+                        <constraint firstItem="QMp-nb-dll" firstAttribute="width" secondItem="f4y-Vv-BO1" secondAttribute="width" multiplier="0.35" id="giA-l0-ONa"/>
+                        <constraint firstItem="iSI-ql-sU9" firstAttribute="leading" secondItem="QMp-nb-dll" secondAttribute="trailing" constant="8" id="lKp-9p-hFe"/>
+                        <constraint firstAttribute="trailing" secondItem="iSI-ql-sU9" secondAttribute="trailing" constant="16" id="rRx-SI-Xde"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="f4y-Vv-BO1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ATf-Xp-Tvo"/>
+                <constraint firstItem="eZb-ky-5Ff" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ev3-5T-qK9"/>
+                <constraint firstAttribute="trailing" secondItem="f4y-Vv-BO1" secondAttribute="trailing" id="Ifb-xA-E7B"/>
+                <constraint firstItem="eZb-ky-5Ff" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KMA-fg-SMZ"/>
+                <constraint firstAttribute="trailing" secondItem="eZb-ky-5Ff" secondAttribute="trailing" id="M2h-22-c4e"/>
+                <constraint firstItem="f4y-Vv-BO1" firstAttribute="top" secondItem="eZb-ky-5Ff" secondAttribute="bottom" id="OLK-Y8-JdK"/>
+                <constraint firstAttribute="bottom" secondItem="f4y-Vv-BO1" secondAttribute="bottom" id="Wsk-OY-WrO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="LUF-SM-dUL"/>
+            <connections>
+                <outlet property="backdropImageView" destination="eZb-ky-5Ff" id="mdW-02-rXa"/>
+                <outlet property="posterImageView" destination="QMp-nb-dll" id="Uje-6T-Uqg"/>
+                <outlet property="releaseLabel" destination="Wcl-om-W5G" id="T1r-st-RYk"/>
+                <outlet property="titleLabel" destination="iSI-ql-sU9" id="gbm-Oe-wNG"/>
+            </connections>
+        </view>
+    </objects>
+</document>

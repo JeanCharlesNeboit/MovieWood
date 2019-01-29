@@ -17,15 +17,12 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        APIRequest.request(urlString: APIRequest.apiURL+"/trending/movie/day") { (data) in
-            guard let data = data else {
-                // Display error
-                return
-            }
-            //UI thread, use data image
+        MovieApi.request(urlString: MovieApi.apiURL+"/trending/movie/day") { (data) in
             var movies = [Movie]()
-            if let list = try? JSONDecoder().decode(MovieList.self, from: data) {
-                movies = list.movies
+            if let data = data {
+                if let list = try? JSONDecoder().decode(MovieList.self, from: data) {
+                    movies = list.movies
+                }
             }
             self.performSegue(withIdentifier: "Present", sender: movies)
         }

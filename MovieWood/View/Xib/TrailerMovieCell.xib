@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ii3-N2-fAA" customClass="TrailerMovieCell" customModule="MovieWood" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ii3-N2-fAA" id="jpb-x8-Bej">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6p-Wt-PA4">
+                        <rect key="frame" x="16" y="11" width="343" height="50"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kbk-MF-4zx">
+                        <rect key="frame" x="16" y="69" width="213.5" height="120"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kbk-MF-4zx" secondAttribute="height" multiplier="16:9" id="TtU-4Q-89J"/>
+                            <constraint firstAttribute="height" constant="120" id="nNJ-vz-ylb"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c6p-Wt-PA4" firstAttribute="leading" secondItem="jpb-x8-Bej" secondAttribute="leadingMargin" id="2Fu-ka-kSg"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="c6p-Wt-PA4" secondAttribute="trailing" id="9As-I1-Umn"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="kbk-MF-4zx" secondAttribute="bottom" id="Uyi-cE-viC"/>
+                    <constraint firstItem="kbk-MF-4zx" firstAttribute="top" secondItem="c6p-Wt-PA4" secondAttribute="bottom" constant="8" id="Xjr-0v-96j"/>
+                    <constraint firstItem="kbk-MF-4zx" firstAttribute="leading" secondItem="jpb-x8-Bej" secondAttribute="leadingMargin" id="iqZ-Y1-gDa"/>
+                    <constraint firstItem="c6p-Wt-PA4" firstAttribute="top" secondItem="jpb-x8-Bej" secondAttribute="topMargin" id="j79-Em-LYv"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+            <connections>
+                <outlet property="thumbnailImageView" destination="kbk-MF-4zx" id="5Zv-kI-pC0"/>
+                <outlet property="titleLabel" destination="c6p-Wt-PA4" id="CUA-vO-msz"/>
+            </connections>
+            <point key="canvasLocation" x="53.600000000000001" y="75.562218890554732"/>
+        </tableViewCell>
+    </objects>
+</document>

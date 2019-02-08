@@ -24,19 +24,14 @@ class Movie: Codable {
     var overview: String?
     var vote_average: Float?
     
-    class Details: Codable {
-        var genre: [String : String]?
-        
-        enum CodingKeys: String, CodingKey {
-            case genre
-        }
-    }
-    
     var poster_path: String?
     var poster_image: UIImage?
     
     var backdrop_path: String?
     var backdrop_image: UIImage?
+    
+    var details: Details?
+    var video: Video?
     
     var watched: Bool?
     var watchlist: Bool?
@@ -52,11 +47,28 @@ class Movie: Codable {
         case vote_average
     }
     
-    /*required init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try values.decodeIfPresent(Int.self, forKey: .id)
+        self.title = try values.decodeIfPresent(String.self, forKey: .title)
         self.original_title = try values.decodeIfPresent(String.self, forKey: .original_title)
         self.release_date = try values.decodeIfPresent(String.self, forKey: .release_date)
+        self.overview = try values.decodeIfPresent(String.self, forKey: .overview)
+        self.vote_average = try values.decodeIfPresent(Float.self, forKey: .vote_average)
         self.poster_path = try values.decodeIfPresent(String.self, forKey: .poster_path)
-    }*/
+        self.backdrop_path = try values.decodeIfPresent(String.self, forKey: .backdrop_path)
+    }
+    
+    // MARK: - Details
+    class Details: Codable {
+        var genre: [String]?
+        
+        enum CodingKeys: String, CodingKey {
+            case genre
+        }
+        
+        required init(from decoder: Decoder) throws {
+            
+        }
+    }
 }

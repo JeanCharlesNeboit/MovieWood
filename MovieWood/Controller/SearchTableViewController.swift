@@ -25,9 +25,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
         searchController.searchBar.delegate = self
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        definesPresentationContext = true
+        definesPresentationContext = false // apply searchBar opaque !
         
-        tableView.register(UINib(nibName: "MovieCellView", bundle: nil), forCellReuseIdentifier: "MovieCellView")
+        tableView.register(UINib(nibName: MovieCell.nibName, bundle: nil), forCellReuseIdentifier: MovieCell.identifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +51,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCellView", for: indexPath) as! MovieCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as! MovieCell
         let movie = movies?[indexPath.row]
         
         // Configure the cell...
@@ -59,7 +59,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             cell.posterImage.image = poster
         }
         else {
-            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
+            ImageDownloader.downloadImageFromApi(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
                 if let image = image {
                     movie?.poster_image = image
                     if let index = self.movies?.index(where: {$0 === movie}) {
@@ -77,7 +77,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
         vc.movie = movies?[indexPath.row]
-        present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     /*
@@ -131,6 +131,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.navigationBar.isTranslucent = false
         movies?.removeAll()
         MovieApi.request(urlString: MovieApi.apiURL + "/search/movie", parameters: "&query=\(searchBar.text?.replacingOccurrences(of: " ", with: "%20") ?? "")&page=1", completionHandler: { (data) in
             guard let data = data else {
@@ -144,5 +145,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating,
             }
         })
         self.tableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.navigationController?.navigationBar.isTranslucent = true
     }
 }

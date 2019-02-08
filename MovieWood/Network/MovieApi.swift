@@ -13,6 +13,11 @@ class MovieApi {
     static let apiKey = "api_key=" + (PropertyList.getValue(for: "ApiKey", plist: "Env") ?? "")
     static let resourcesURL = "https://image.tmdb.org/t/p"
     
+    enum ImageResolution: String {
+        case original = "/original"
+        case reduce = "/w500"
+    }
+    
     static func request(urlString: String, parameters: String = "", completionHandler: @escaping (Data?) -> Void) {
         let _url = urlString + "?" + apiKey +  parameters
         guard let url = URL(string: _url) else {

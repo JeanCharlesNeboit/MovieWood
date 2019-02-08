@@ -6,4 +6,8 @@
 //  Copyright © 2019 Jean-Charles Neboit. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class People: Codable {
+    
+}

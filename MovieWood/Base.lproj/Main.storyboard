@@ -285,42 +285,27 @@
                                     <outlet property="delegate" destination="zJg-W7-OsY" id="e7e-nG-5Oo"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWs-Dw-Ip8">
-                                <rect key="frame" x="337" y="28" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="IWs-Dw-Ip8" secondAttribute="height" id="G3x-4s-VsD"/>
-                                    <constraint firstAttribute="height" constant="30" id="jme-Sh-v3C"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="Close"/>
-                                <connections>
-                                    <action selector="dismiss" destination="zJg-W7-OsY" eventType="touchUpInside" id="cWf-Pg-SqZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Gta-Rq-8Ga" firstAttribute="top" secondItem="17c-g7-6G9" secondAttribute="top" id="3sx-IZ-8dA"/>
                             <constraint firstItem="OaW-m6-qym" firstAttribute="trailing" secondItem="Gta-Rq-8Ga" secondAttribute="trailing" id="XZx-RP-xMR"/>
-                            <constraint firstItem="IWs-Dw-Ip8" firstAttribute="top" secondItem="OaW-m6-qym" secondAttribute="top" constant="8" id="Xh1-FP-Hen"/>
                             <constraint firstItem="OaW-m6-qym" firstAttribute="bottom" secondItem="Gta-Rq-8Ga" secondAttribute="bottom" id="g7u-c7-Y9B"/>
-                            <constraint firstItem="OaW-m6-qym" firstAttribute="trailing" secondItem="IWs-Dw-Ip8" secondAttribute="trailing" constant="8" id="uMJ-tl-ihN"/>
                             <constraint firstItem="Gta-Rq-8Ga" firstAttribute="leading" secondItem="OaW-m6-qym" secondAttribute="leading" id="udo-CP-G2t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OaW-m6-qym"/>
                     </view>
+                    <navigationItem key="navigationItem" id="55P-QA-gDp"/>
                     <connections>
-                        <outlet property="dismissButton" destination="IWs-Dw-Ip8" id="8tI-GY-gec"/>
                         <outlet property="tableView" destination="Gta-Rq-8Ga" id="cnx-x4-uK1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtp-QM-yy4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3028" y="358"/>
+            <point key="canvasLocation" x="2878" y="358"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Close" width="45" height="45"/>
         <image name="Ticket" width="198" height="152"/>
         <image name="TodayItem" width="31.5" height="31.5"/>
         <image name="WishItem" width="31.5" height="31.5"/>

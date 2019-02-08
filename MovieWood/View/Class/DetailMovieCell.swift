@@ -13,7 +13,11 @@ class DetailMovieCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     
+    static let nibName = #file.lastPathComponent.deletePathComponent
+    static let identifier = DetailMovieCell.nibName
+    
     enum CellType: String, CaseIterable {
+        case own
         case overview = "Overview"
         case trailer = "Trailer"
         case related = "Related"
@@ -27,16 +31,6 @@ class DetailMovieCell: UITableViewCell {
         // Initialization code
         detailTextView.textContainerInset = .zero
         detailTextView.textContainer.lineFragmentPadding = 0
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
     override func prepareForReuse() {

@@ -11,12 +11,7 @@ import UIKit
 class ImageDownloader {
     static var imagesDict: [String: Bool]?
     
-    enum imageType: String {
-        case original = "/original"
-        case reduce = "/w500"
-    }
-    
-    static func downloadImage(urlString: String, type: imageType, completionHandler: @escaping (UIImage?) -> Void) {
+    static func downloadImageFromApi(urlString: String, type: MovieApi.ImageResolution, completionHandler: @escaping (UIImage?) -> Void) {
         let index = imagesDict?.index(forKey: urlString)
         if index != nil && imagesDict?[index!].value == true {
             return
@@ -29,6 +24,18 @@ class ImageDownloader {
                 image = UIImage(data: data)
                 imagesDict?.removeValue(forKey: urlString)
             }
+            completionHandler(image)
+        }
+    }
+    
+    static func downloadImageFromYoutube(videoID: String, type: YouTube.ImageResolution, completionHandler: @escaping (UIImage?) -> Void) {
+        let index = imagesDict?.index(forKey: videoID)
+        if index != nil && imagesDict?[index!].value == true {
+            return
+        }
+        
+        imagesDict?[videoID] = true
+        YouTube.getThumbnail(video: videoID, resolution: .standard) { (image) in
             completionHandler(image)
         }
     }

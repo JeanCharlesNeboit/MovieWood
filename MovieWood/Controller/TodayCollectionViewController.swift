@@ -72,7 +72,7 @@ class TodayCollectionViewController: UICollectionViewController {
             cell.showPoster(image: poster)
         }
         else {
-            ImageDownloader.downloadImage(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
+            ImageDownloader.downloadImageFromApi(urlString: "/\(movie?.poster_path ?? "")", type: .reduce) { (image) in
                 if let image = image {
                     movie?.poster_image = image
                     if let index = self.movies?.index(where: {$0 === movie}) {
@@ -89,7 +89,7 @@ class TodayCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(withIdentifier: "MovieTableViewController") as! MovieTableViewController
         vc.movie = movies?[indexPath.row]
-        present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     // MARK: UICollectionViewDelegate

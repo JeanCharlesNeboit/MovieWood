@@ -14,6 +14,9 @@ class MovieCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     
+    static let nibName = #file.lastPathComponent.deletePathComponent
+    static let identifier = MovieCell.nibName
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
